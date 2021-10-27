@@ -21,9 +21,14 @@ export default function Header() {
 
   const [estadoSelecionado, setEstadoSelecionado] = useState("");
 
+  const [loaded, setLoaded] = useState(false);
+    
   useEffect(() => {
-    carregarEstados();
-  });
+      if (!loaded) {
+          carregarEstados();
+          setLoaded(true)
+      }
+  }, [loaded]);
 
   return (
     <Head className="container-fluid p-3 d-flex justify-content-between align-items-center text-white">
