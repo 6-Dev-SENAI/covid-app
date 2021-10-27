@@ -1,60 +1,74 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 
-import api from "../../services/service.js"
+import { Container } from "./styled.js";
+
+import api from "../../services/service.js";
 const Access = new api();
 
 export default function GraphO(props) {
+  const { estadoSelecionado } = props;
 
-    const [data, setData] = useState({
+  const [info, setInfo] = useState({
+    data: {
       labels: [],
       datasets: [
         {
           label: "# de Pessoas Vacinadas",
           data: [],
-          backgroundColor: [
-            "rgba(255, 255, 255, 0.2)"
-          ],
-          borderColor: [
-            "rgba(255, 255, 255, 1)"
-          ],
+          backgroundColor: ["rgba(255, 255, 255, 0.2)"],
+          borderColor: ["rgba(255, 255, 255, 1)"],
           borderWidth: 1,
         },
       ],
-    });
+    },
+    estados: [],
+  });
 
-    const carregarPessoasVacinadas = async () => {
-      try {
-        const resp = await Access.carregarPessoasVacinadas();
-        console.log(resp)
-        setData(resp);
-        return null;
-      } catch (err) {
-        console.error(err);
-      }
-    };
+  const carregarPessoasVacinadas = async () => {
+    try {
+      const resp = await Access.carregarPessoasVacinadas();
+      setInfo(resp);
+      return null;
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-    const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    carregarPessoasVacinadas();
+  }, [estadoSelecionado]);
 
-    useEffect(() => {
-      if (!loaded) {
-        carregarPessoasVacinadas();
-        setLoaded(true);
-      }
-    }, [loaded]);
-        
-    return (
+  const [vacinacao, setVacinacao] = useState(0);
+
+  useEffect(() => {
+    let estado = info.estados.filter((x) => x.nome === estadoSelecionado)[0];
+
+    if (estado === undefined) {
+      estado = {
+        id: 0,
+        nome: "Selecione o Estado",
+        vacinados: 0,
+      };
+    }
+
+    setVacinacao(estado.vacinados);
+  }, [estadoSelecionado, info]);
+
+  return (
+    <Container className="container-fluid text-white p-2 border-0">
       <div>
-        <div>
-          <p>Total de Pessoas Vacinadas</p>
-          <p>Selecione o Estado: 0</p>
-        </div>
-        <div>
-          <Doughnut
-            data={data}
-            options={{ plugins: { legend: { display: false } } }}
-          />
-        </div>
+        <p>Total de Pessoas Vacinadas</p>
+        <p>
+          {estadoSelecionado}: {vacinacao}
+        </p>
       </div>
-    );
+      <div>
+        <Doughnut
+          data={info.data}
+          options={{ plugins: { legend: { display: false } } }}
+        />
+      </div>
+    </Container>
+  );
 }

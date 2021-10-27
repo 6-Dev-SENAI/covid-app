@@ -16,26 +16,31 @@ export default class Access {
   async carregarPessoasVacinadas() {
     const resp = await api.get("/vaccines?country=Brazil");
     const estados = resp.data;
-    let estadosReturn = [];
+    let estadosTotal = [];
     let estadosNome = Object.keys(estados);
     estadosNome.forEach((nome, index) => {
       let estadoInfo = estados[nome];
 
-      if (nome !== "Unknown" && nome !== "All") {
+      if (nome !== "Unknown") {
         let estado = {
           id: index,
           nome,
           vacinados: estadoInfo.administered,
         };
 
-        estadosReturn.push(estado);
+        estadosTotal.push(estado);
       }
     });
 
-    return this.graphOneInfo(estadosReturn);
+    let estadosReturn = estadosTotal.filter((x) => x.nome !== "All");
+
+    return {
+      estados: estadosTotal,
+      data: this.graphOneInfo(estadosReturn),
+    };
   }
 
-    graphOneInfo(estados) {
+  graphOneInfo(estados) {
     let nomes = estados.map((estado) => estado.nome);
     let qtdVacinados = estados.map((estado) => estado.vacinados);
 
@@ -46,33 +51,33 @@ export default class Access {
           label: "# de Pessoas Vacinadas",
           data: [...qtdVacinados],
           backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(255, 206, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 100, 64, 0.2)",
-            "rgba(105, 159, 64, 0.2)",
-            "rgba(55, 259, 164, 0.2)",
-            "rgba(75, 75, 139, 0.2)",
-            "rgba(102, 205, 170, 0.2)",
-            "rgba(255, 222, 173, 0.2)",
-            "rgba(255, 180, 311, 0.2)",
-            "rgba(238, 130, 238, 0.2)",
-            "rgba(255, 182, 193, 0.2)",
-            "rgba(255, 210, 115, 0.2)",
-            "rgba(233, 150, 122, 0.2)",
-            "rgba(255, 127, 80, 0.2)",
-            "rgba(160, 200, 115, 0.2)",
-            "rgba(216, 191, 216, 0.2)",
-            "rgba(176, 224, 230, 0.2)",
-            "rgba(190, 159, 170, 0.2)",
-            "rgba(175, 238, 238, 0.2)",
-            "rgba(240, 255, 113, 0.2)",
-            "rgba(255, 99, 71, 0.2)",
-            "rgba(100, 109, 164, 0.2)",
-            "rgba(205, 92, 92, 0.2)",
+            "rgba(255, 99, 132, 0.7)",
+            "rgba(54, 162, 235, 0.7)",
+            "rgba(255, 206, 86, 0.7)",
+            "rgba(75, 192, 192, 0.7)",
+            "rgba(153, 102, 255, 0.7)",
+            "rgba(255, 159, 64, 0.7)",
+            "rgba(255, 100, 64, 0.7)",
+            "rgba(105, 159, 64, 0.7)",
+            "rgba(55, 259, 164, 0.7)",
+            "rgba(75, 75, 139, 0.7)",
+            "rgba(102, 205, 170, 0.7)",
+            "rgba(255, 222, 173, 0.7)",
+            "rgba(255, 180, 311, 0.7)",
+            "rgba(238, 130, 238, 0.7)",
+            "rgba(255, 182, 193, 0.7)",
+            "rgba(255, 210, 115, 0.7)",
+            "rgba(233, 150, 122, 0.7)",
+            "rgba(255, 127, 80, 0.7)",
+            "rgba(160, 200, 115, 0.7)",
+            "rgba(216, 191, 216, 0.7)",
+            "rgba(176, 224, 230, 0.7)",
+            "rgba(190, 159, 170, 0.7)",
+            "rgba(175, 238, 238, 0.7)",
+            "rgba(240, 255, 113, 0.7)",
+            "rgba(255, 99, 71, 0.7)",
+            "rgba(100, 109, 164, 0.7)",
+            "rgba(205, 92, 92, 0.7)",
           ],
           borderColor: [
             "rgba(255, 99, 132, 1)",
@@ -108,6 +113,6 @@ export default class Access {
       ],
     };
 
-      return data;
+    return data;
   }
 }

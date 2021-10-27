@@ -1,34 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { Head, SelectArea } from "./styled";
-// import EstadoContext from "../../context/estadoContext";
 
-import api from "../../services/service.js";
-const Access = new api();
-
-export default function Header() {
-  const [estados, setEstados] = useState([]);
-
-  const carregarEstados = async () => {
-    try {
-      const resp = await Access.carregarEstados();
-      setEstados([...resp]);
-      return null;
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  const [estadoSelecionado, setEstadoSelecionado] = useState("");
-
-  const [loaded, setLoaded] = useState(false);
-    
-  useEffect(() => {
-      if (!loaded) {
-          carregarEstados();
-          setLoaded(true)
-      }
-  }, [loaded]);
+export default function Header(props) {
+  const { estados, setarEstado } = props;
 
   return (
     <Head className="container-fluid p-3 d-flex justify-content-between align-items-center text-white">
@@ -43,9 +18,7 @@ export default function Header() {
           <select
             className="form-control w-100"
             onChange={(e) =>
-              setEstadoSelecionado(
-                e.target.options[e.target.selectedIndex].value
-              )
+              setarEstado(e.target.options[e.target.selectedIndex].value)
             }
           >
             {estados.map((estado, index) => (
