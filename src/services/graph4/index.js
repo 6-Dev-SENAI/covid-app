@@ -9,7 +9,7 @@ async function loadMonths(axios) {
   let dates = [];
   datesKeys.forEach((dateKey) => {
     let date = {
-      date: new Date(datesAPI[dateKey]),
+      date: new Date(dateKey.toString()),
       quantity: datesAPI[dateKey],
     };
 
@@ -31,7 +31,7 @@ async function loadMonths(axios) {
     dec = [];
 
   dates.forEach((date) => {
-    switch (date.getMonth()) {
+    switch (date.date.getMonth()) {
       case 0:
         jan.push(date);
         break;
@@ -93,7 +93,7 @@ async function loadMonths(axios) {
     let firstDay = month[0];
     let lastDay = month[month.length - 1];
 
-    let totalQuantity = lastDay.quantity - firstDay.quantity;
+    let totalQuantity = firstDay.quantity - lastDay.quantity;
 
     let name, display;
     switch (_index % 12) {

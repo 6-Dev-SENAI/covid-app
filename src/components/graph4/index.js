@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { Line } from "react-chartjs-2";
 
 import { Container } from "./styled";
@@ -31,9 +32,15 @@ export default function GraphF(props) {
   });
 
   const loadContent = async () => {
-    const resp = await API.graphFour();
-    setScreenInfo(resp);
-    return resp;
+    try {
+      const resp = await API.graphFour();
+      setScreenInfo(resp);
+      return resp;
+    } catch (err) {
+      toast.info("Ocorreu um erro. Fechando Gráfico #4", {
+        autoClose: 5000,
+      });
+    }
   };
 
   const [loaded, setLoaded] = useState(false);
@@ -48,10 +55,13 @@ export default function GraphF(props) {
   return (
     <Container className="container-fluid text-white p-2 border-0">
       <div>
-        <p>Pessoas mortas/mês nos últimos 12 meses</p>
+        <p>Pessoas mortas/mês nos últimos 12 meses no Brasil</p>
       </div>
       <div>
-        <Line data={screenInfo.data} />
+        <Line
+          data={screenInfo.data}
+          options={{ plugins: { legend: { display: false } } }}
+        />
       </div>
     </Container>
   );

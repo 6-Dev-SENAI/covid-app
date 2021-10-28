@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { Pie } from "react-chartjs-2";
 
 import { Container } from "./styled.js";
@@ -36,9 +37,13 @@ export default function GraphTr(props) {
   });
 
   const loadContent = useCallback(async () => {
-    const resp = await API.graphThree(selectedState);
-    setScreenInfo(resp);
-    return resp;
+    try {
+      const resp = await API.graphThree(selectedState);
+      setScreenInfo(resp);
+      return resp;
+    } catch (err) {
+      toast.info("Ocorreu um erro. Fechando Gráfico #3", { autoClose: 5000 });
+    }
   }, [selectedState]);
 
   useEffect(() => {
