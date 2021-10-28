@@ -14,4 +14,9 @@ export const SelectArea = styled.div`
   .text-area {
     width: 52%;
   }
+
+  select.form-select:focus {
+    border-color: #3c3c3c !important;
+    box-shadow: 0 0 0 0.25rem rgb(0 0 0 / 25%) !important;
+  }
 `;

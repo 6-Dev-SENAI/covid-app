@@ -38,7 +38,7 @@ export default class AccessAPI {
 
   async graphThree(selectedState) {
     try {
-      const resp = await loadPeople(api.get, selectedState)
+      const resp = await loadPeople(api.get, selectedState);
       return resp;
     } catch (err) {
       console.error(err);

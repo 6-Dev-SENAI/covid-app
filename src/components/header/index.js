@@ -16,7 +16,7 @@ export default function Header(props) {
         </div>
         <div className="form-group select-area">
           <select
-            className="form-control w-100"
+            className="form-select w-100"
             onChange={(e) =>
               setState(e.target.options[e.target.selectedIndex].value)
             }

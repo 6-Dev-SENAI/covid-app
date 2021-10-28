@@ -42,23 +42,25 @@ export default function GraphTr(props) {
   }, [selectedState]);
 
   useEffect(() => {
-    loadContent()
+    loadContent();
   }, [selectedState, loadContent]);
-  
+
   return (
     <Container className="container-fluid text-white p-2 border-0">
       <div>
         <p>Pessoas Infectadas e Mortas</p>
         <p>
           {screenInfo.state.selected
-            ? `Total de Pessoas | ${screenInfo.state.display}: ${(screenInfo.state.graphQuantities.total).toLocaleString("en-US")}`
+            ? `Total de Pessoas | ${
+                screenInfo.state.display
+              }: ${screenInfo.state.graphQuantities.total.toLocaleString(
+                "en-US"
+              )}`
             : screenInfo.state.display}
         </p>
       </div>
       <div>
-        <Pie
-          data={screenInfo.data}
-        />
+        <Pie data={screenInfo.data} />
       </div>
     </Container>
   );
