@@ -1,9 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function GraphTr() {
-    return (
-        <div>
-            Gráfico 3
-        </div>
-    )
+  return <div>Gráfico 3</div>;
 }

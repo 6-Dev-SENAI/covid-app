@@ -3,12 +3,12 @@ import React from "react";
 import { Head, SelectArea } from "./styled";
 
 export default function Header(props) {
-  const { estados, setarEstado } = props;
+  const { states, setState } = props;
 
   return (
-    <Head className="container-fluid p-3 d-flex justify-content-between align-items-center text-white">
+    <Head className="container-fluid p-2 d-flex justify-content-between align-items-center text-white">
       <div>
-        <h1 className="text-decoration-underline">COVID-19 no Brasil</h1>
+        <h3 className="text-decoration-underline">COVID-19 no Brasil</h3>
       </div>
       <SelectArea className="d-flex h-100 justify-content-between align-items-center">
         <div className="form-group text-area">
@@ -18,16 +18,12 @@ export default function Header(props) {
           <select
             className="form-control w-100"
             onChange={(e) =>
-              setarEstado(e.target.options[e.target.selectedIndex].value)
+              setState(e.target.options[e.target.selectedIndex].value)
             }
           >
-            {estados.map((estado, index) => (
-              <option key={index} value={estado}>
-                {estado === "All"
-                  ? "Todos"
-                  : estado === "Sao Paulo"
-                  ? "São Paulo"
-                  : estado}
+            {states.map((state) => (
+              <option key={state.id} value={state.name}>
+                {state.display}
               </option>
             ))}
           </select>

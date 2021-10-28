@@ -1,9 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function GraphF() {
-    return (
-        <div>
-            Gráfico 4
-        </div>
-    )
+  return <div>Gráfico 4</div>;
 }
