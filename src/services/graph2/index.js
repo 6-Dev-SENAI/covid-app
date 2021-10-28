@@ -1,7 +1,6 @@
 import { formatted_name } from "../aux.js";
 
 async function loadVac(axios, selectedState) {
-  console.log(selectedState);
   const resp = await axios("/vaccines?country=Brazil");
   const dataAPI = resp.data;
 

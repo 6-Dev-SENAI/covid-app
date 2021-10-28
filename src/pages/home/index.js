@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 
 import Header from "../../components/header";
 import GraphO from "../../components/graph1";
+import GraphTw from "../../components/graph2";
+import GraphTr from "../../components/graph3";
 
 import AccessAPI from "../../services";
-import GraphTw from "../../components/graph2";
 const API = new AccessAPI();
 
 export default function Home() {
@@ -44,6 +45,7 @@ export default function Home() {
         <div className="container-fluid d-flex">
           <GraphO state={selectedState} />
           <GraphTw state={selectedState} />
+          <GraphTr state={selectedState} />
         </div>
         <div className="container-fluid d-flex"></div>
       </div>

@@ -1,8 +1,9 @@
 import { getComboStates } from "./header";
 import { loadStates } from "./graph1";
+import { loadVac } from "./graph2";
+import { loadPeople } from "./graph3";
 
 import axios from "axios";
-import { loadVac } from "./graph2";
 const api = axios.create({
   baseURL: "https://covid-api.mmediagroup.fr/v1",
 });
@@ -35,8 +36,10 @@ export default class AccessAPI {
     }
   }
 
-  async graphThree() {
+  async graphThree(selectedState) {
     try {
+      const resp = await loadPeople(api.get, selectedState)
+      return resp;
     } catch (err) {
       console.error(err);
     }
