@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { Line } from "react-chartjs-2";
 
@@ -31,7 +31,7 @@ export default function GraphF(props) {
     },
   });
 
-  const loadContent = async () => {
+  const loadContent = useCallback(async () => {
     try {
       const resp = await API.graphFour();
       setScreenInfo(resp);
@@ -41,7 +41,7 @@ export default function GraphF(props) {
         autoClose: 5000,
       });
     }
-  };
+  }, []);
 
   const [loaded, setLoaded] = useState(false);
 
@@ -50,10 +50,10 @@ export default function GraphF(props) {
       loadContent();
       setLoaded(true);
     }
-  }, [loaded]);
+  }, [loaded, loadContent]);
 
   return (
-    <Container className="container-fluid text-white p-2 border-0">
+    <Container className="container-fluid text-white p-2 border-0 m-0">
       <div>
         <p>Pessoas mortas/mês nos últimos 12 meses no Brasil</p>
       </div>

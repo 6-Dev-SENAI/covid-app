@@ -43,7 +43,7 @@ export default function Home() {
     <div>
       <Header states={states} setState={setSelectedState} />
       <div className="container-fluid p-3 d-flex flex-column">
-        <div className="container-fluid d-flex flex-wrap">
+        <div className="container-fluid d-flex justify-content-between flex-wrap mb-2">
           <GraphO state={selectedState} />
           <GraphTw state={selectedState} />
           <GraphTr state={selectedState} />

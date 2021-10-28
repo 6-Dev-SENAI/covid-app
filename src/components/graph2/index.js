@@ -62,7 +62,7 @@ export default function GraphTw(props) {
   }, [selectedState, loadContent]);
 
   return (
-    <Container className="container-fluid text-white p-2 border-0">
+    <Container className="container-fluid text-white p-2 border-0 m-0">
       <div>
         <p>Pessoas Vacinadas no Brasil:</p>
       </div>

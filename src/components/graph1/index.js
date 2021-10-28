@@ -79,7 +79,7 @@ export default function GraphO(props) {
   }, [screenInfo, selectedState]);
 
   return (
-    <Container className="container-fluid text-white p-2 border-0">
+    <Container className="container-fluid text-white p-2 border-0 m-0">
       <div>
         <p>Total de Pessoas Vacinadas</p>
         <p>
