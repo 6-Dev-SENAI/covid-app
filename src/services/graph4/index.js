@@ -31,46 +31,55 @@ async function loadMonths(axios) {
     dec = [];
 
   dates.forEach((date) => {
-    switch (date.date.getMonth()) {
-      case 0:
-        jan.push(date);
-        break;
-      case 1:
-        feb.push(date);
-        break;
-      case 2:
-        mar.push(date);
-        break;
-      case 3:
-        apr.push(date);
-        break;
-      case 4:
-        may.push(date);
-        break;
-      case 5:
-        jun.push(date);
-        break;
-      case 6:
-        jul.push(date);
-        break;
-      case 7:
-        ago.push(date);
-        break;
-      case 8:
-        sep.push(date);
-        break;
-      case 9:
-        oct.push(date);
-        break;
-      case 10:
-        nov.push(date);
-        break;
-      case 11:
-        dec.push(date);
-        break;
-      default:
-        jan.push(date);
-        break;
+    let today = new Date();
+    let yearToday = new Date(
+      today.getFullYear() - 1,
+      today.getMonth() + 1,
+      today.getDate()
+    );
+    let day = date.date;
+    if (day >= yearToday) {
+      switch (day.getMonth()) {
+        case 0:
+          jan.push(date);
+          break;
+        case 1:
+          feb.push(date);
+          break;
+        case 2:
+          mar.push(date);
+          break;
+        case 3:
+          apr.push(date);
+          break;
+        case 4:
+          may.push(date);
+          break;
+        case 5:
+          jun.push(date);
+          break;
+        case 6:
+          jul.push(date);
+          break;
+        case 7:
+          ago.push(date);
+          break;
+        case 8:
+          sep.push(date);
+          break;
+        case 9:
+          oct.push(date);
+          break;
+        case 10:
+          nov.push(date);
+          break;
+        case 11:
+          dec.push(date);
+          break;
+        default:
+          jan.push(date);
+          break;
+      }
     }
   });
 

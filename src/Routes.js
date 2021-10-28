@@ -14,7 +14,7 @@ export default function Routes() {
         <Route path="/" exact component={Home} />
         <Route path="*" component={Error} />
       </Switch>
-      <ToastContainer />
+      <ToastContainer position="top-left" />
     </BrowserRouter>
   );
 }
