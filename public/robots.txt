@@ -1,3 +1,13 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow: /
+
+User-agent: *
+Allow: /public/
+
+User-agent: *
+Allow: /src/
+
+User-agent: *
+Disallow: /src/services/
+
