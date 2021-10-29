@@ -170,6 +170,15 @@ async function loadMonths(axios) {
     months.push(monthObj);
   });
 
+  let monthsCopy = [...months];
+  let today = new Date();
+  while (monthsCopy[0].id !== today.getMonth() + 1) {
+    let lastMonth = monthsCopy[monthsCopy.length - 1];
+    monthsCopy.unshift(lastMonth);
+    monthsCopy.pop();
+  }
+  months = [...monthsCopy];
+
   const data = loadData(months);
 
   return {

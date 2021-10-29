@@ -1,4 +1,4 @@
-import { formatted_name, colors } from "../aux.js";
+import { formatted_name, colors } from "../serviceHelper.js";
 
 async function loadStates(axios, selectedState) {
   const resp = await axios("/vaccines?country=Brazil");

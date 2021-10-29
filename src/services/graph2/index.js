@@ -1,4 +1,4 @@
-import { formatted_name } from "../aux.js";
+import { formatted_name } from "../serviceHelper.js";
 
 async function loadVac(axios, selectedState) {
   const resp = await axios("/vaccines?country=Brazil");

@@ -1,4 +1,4 @@
-import { formatted_name } from "../aux.js";
+import { formatted_name } from "../serviceHelper.js";
 
 async function getComboStates(axios) {
   const resp = await axios("/cases?country=Brazil");
