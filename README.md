@@ -78,18 +78,14 @@ $ yarn start
             <td>
                 Gustavo
             </td>
-        </tr>
-        <tr>
-            <td>
-                Diogo
-            </td>
             <td>
                 <a href="https://github.com/diogolimalucasdev">
                     <img src="https://avatars.githubusercontent.com/u/66488127?v=4" width="100px" style="border-radius: 50%;" alt=""/>
                 </a>
             </td>
-        </tr>
-        <tr>
+            <td>
+                Diogo
+            </td>
             <td>
                 <a href="https://github.com/GuilhermeSeveriano">
                     <img src="https://avatars.githubusercontent.com/u/87097691?v=4" width="100px" style="border-radius: 50%;" alt=""/>
@@ -101,15 +97,13 @@ $ yarn start
         </tr>
         <tr>
             <td>
-                Edmilson
-            </td>
-            <td>
                 <a href="https://github.com/Edmilson1406">
                     <img src="https://avatars.githubusercontent.com/u/87097456?v=4" width="100px" style="border-radius: 50%;" alt=""/>
                 </a>
             </td>
-        </tr>
-        <tr>
+            <td>
+                Edmilson
+            </td>
             <td>
                 <a href="https://github.com/Gabriel-Silvano">
                     <img src="https://avatars.githubusercontent.com/u/84875270?v=4" width="100px" style="border-radius: 50%;" alt=""/>
@@ -118,15 +112,13 @@ $ yarn start
             <td>
                 Gabriel
             </td>
-        </tr>
-                <tr>
-            <td>
-                Ana
-            </td>
             <td>
                 <a href="https://github.com/anaalves-ferr">
                     <img src="https://avatars.githubusercontent.com/u/88809084?v=4" width="100px" style="border-radius: 50%;" alt=""/>
                 </a>
+            </td>
+            <td>
+                Ana
             </td>
         </tr>
     </tbody>
