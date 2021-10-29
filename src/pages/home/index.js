@@ -5,6 +5,7 @@ import GraphO from "../../components/graph1";
 import GraphTw from "../../components/graph2";
 import GraphTr from "../../components/graph3";
 import GraphF from "../../components/graph4";
+import { GraphsContainer, GraphContainer } from "./styled";
 
 import AccessAPI from "../../services";
 const API = new AccessAPI();
@@ -43,14 +44,14 @@ export default function Home() {
     <div>
       <Header states={states} setState={setSelectedState} />
       <div className="container-fluid p-3 d-flex flex-column">
-        <div className="container-fluid d-flex justify-content-between flex-wrap mb-2">
+        <GraphsContainer className="container-fluid d-flex justify-content-between mb-2">
           <GraphO state={selectedState} />
           <GraphTw state={selectedState} />
           <GraphTr state={selectedState} />
-        </div>
-        <div className="container-fluid d-flex">
+        </GraphsContainer>
+        <GraphContainer className="container-fluid d-flex">
           <GraphF />
-        </div>
+        </GraphContainer>
       </div>
     </div>
   );

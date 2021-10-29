@@ -54,7 +54,7 @@ export default function GraphTr(props) {
     <Container className="container-fluid text-white p-2 border-0 m-0">
       <div>
         <p>Pessoas Infectadas e Mortas</p>
-        <p>
+        <p className="sub-text">
           {screenInfo.state.selected
             ? `Total de Pessoas | ${
                 screenInfo.state.display

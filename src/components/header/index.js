@@ -8,7 +8,9 @@ export default function Header(props) {
   return (
     <Head className="container-fluid p-2 d-flex justify-content-between align-items-center text-white">
       <div>
-        <h3 className="text-decoration-underline">COVID-19 no Brasil</h3>
+        <h3 className="text-decoration-underline text-wrap">
+          COVID-19 no Brasil
+        </h3>
       </div>
       <SelectArea className="d-flex h-100 justify-content-between align-items-center">
         <div className="form-group text-area">
