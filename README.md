@@ -40,6 +40,8 @@ $ code .
 $ npm install
 # Se for de sua vontade iniciar com o yarn, basta digitá-lo
 $ yarn
+# Caso queira instalar as dependência de uma só vez, rode
+$ npm run deps
 
 # E então, no terminal ainda, inicie o server
 $ npm start 
